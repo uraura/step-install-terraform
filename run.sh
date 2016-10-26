@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+#set -x
 
 error_exit() {
     local message=$1
