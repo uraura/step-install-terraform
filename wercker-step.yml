@@ -1,0 +1,13 @@
+name: install-terraform
+version: 0.0.1
+description: Install HashiCorp/Terraform
+keywords:
+  - terraform
+properties:
+  version:
+    type: string
+    required: true
+  use-cache:
+    type: string
+    default: true
+    required: false
