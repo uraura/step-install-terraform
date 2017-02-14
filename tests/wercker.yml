@@ -1,0 +1,15 @@
+#box: ubuntu:14.04.5
+box: buildpack-deps:trusty-curl
+
+build:
+  steps:
+    - install-packages:
+        packages: unzip
+        clear-cache: false
+    - script:
+        name: test
+        code: |
+          export WERCKER_INSTALL_TERRAFORM_VERSION=0.8.6
+          export WERCKER_INSTALL_TERRAFORM_USE_CACHE="true"
+          bash ./run.sh
+          terraform version
