@@ -18,6 +18,11 @@ check_packages() {
 main () {
   local version=$1
   local install_dir=$2
+  if [[ $version == "current" ]]; then
+    curl -Lo /usr/local/bin/jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
+    chmod +x /usr/local/bin/jq
+    version=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r '.current_version' )
+  fi
   if [ ! -f "${install_dir}/terraform_${version}_linux_amd64/terraform" ]; then
     check_packages
     info "Fetching Terraform..."
